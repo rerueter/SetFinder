@@ -25,13 +25,15 @@ const subsetChecker = (a, b, c) => {
 
 // subsetChecker(1, 1, 1);
 
-const setChecker = (input) => {
+// compares 3 cards, using subsetChecker to compare each of 4 attributes
+// if all 4 subset checks return true, the cards comprise a Set and true is returned
+const setChecker = (a, b, c) => {
   let set = false;
   let chk = subsetChecker;
-  let color = chk(input[0].color, input[1].color, input[2].color);
-  let shape = chk(input[0].shape, input[1].shape, input[2].shape);
-  let count = chk(input[0].count, input[1].count, input[2].count);
-  let fill = chk(input[0].fill, input[1].fill, input[2].fill);
+  let color = chk(a.color, b.color, c.color);
+  let shape = chk(a.shape, b.shape, c.shape);
+  let count = chk(a.count, b.count, c.count);
+  let fill = chk(a.fill, b.fill, c.fill);
   if (color && shape && count && fill) {
     set = true;
   }
@@ -41,15 +43,16 @@ const setChecker = (input) => {
 
 // setChecker(cards);
 
+// compares every combination of three cards from an array, looking for a Set
+// as soon as a Set is found, true is returned
 const setFinder = (input) => {
   let setExists = false;
   // console.log(input.length);
   for (i = 0; i < input.length - 2; i++) {
     for (j = 1; j < input.length - 1; j++) {
       for (k = 2; k < input.length; k++) {
-        const toCheck = [input[i], input[j], input[k]];
-        console.log(toCheck);
-        if (setChecker(toCheck) === true) {
+        console.log(input[i], input[j], input[k]);
+        if (setChecker(input[i], input[j], input[k]) === true) {
           setExists = true;
           console.log(setExists);
           return setExists;
