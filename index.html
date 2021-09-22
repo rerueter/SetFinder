@@ -6,7 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <title>Document</title>
+    <title>Is Set??</title>
   </head>
-  <body></body>
+  <body id="body">
+    <form action="" class="builder">
+      <div id="count">
+        <button class="count" value="1">1</button>
+        <button class="count" value="2">2</button>
+        <button class="count" value="3">3</button>
+      </div>
+      <div id="shade">
+        <button class="shade" value="empty">empty</button>
+        <button class="shade" value="hatch">hatch</button>
+        <button class="shade" value="solid">solid</button>
+      </div>
+      <div id="color">
+        <button class="color" value="red">red</button>
+        <button class="color" value="purple">purple</button>
+        <button class="color" value="green">green</button>
+      </div>
+      <div id="shape">
+        <button class="shape" value="pill">pill</button>
+        <button class="shape" value="diamond">diamond</button>
+        <button class="shape" value="squiggle">squiggle</button>
+      </div>
+      <button id="addCard">add card</button>
+      <button id="rmvCard">remove previous card</button>
+    </form>
+    <div id="cards">
+      <div class="card">
+        <div class="color">color</div>
+        <div class="shape">shape</div>
+        <div class="count">count</div>
+        <div class="fill">fill</div>
+      </div>
+    </div>
+    <button id="setExists">is there a set??</button>
+  </body>
 </html>
