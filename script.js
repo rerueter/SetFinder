@@ -24,18 +24,23 @@ const appendCard = () => {
   const cardTemplate = document.createElement("div");
   cardTemplate.classList.add("card");
   cardTemplate.innerHTML = `     
-       <div>${card.count}</div>
-        <div>${card.shade}</div>
-       <div>${card.color}</div>
-       <div>${card.shape}</div>
-       `;
+    <div>${card.count}</div>
+    <div>${card.shade}</div>
+    <div>${card.color}</div>
+    <div>${card.shape}</div>
+  `;
   document.getElementById("cards").append(cardTemplate);
 };
 
 const rmvCard = () => {
   cards.pop();
   console.table(cards);
+
+  let hand = document.getElementById("cards");
+  let toRemove = hand.lastChild;
+  hand.removeChild(toRemove);
 };
+
 // === Set Checkers === //
 
 // compares 3 inputs to see if they are either all identical or all unique
@@ -71,7 +76,7 @@ const setChecker = (a, b, c) => {
 // as soon as a Set is found, true is returned
 const setFinder = () => {
   let setExists = false;
-  let input = cardInput;
+  let input = cards;
   // console.log(input.length);
   for (i = 0; i < input.length - 2; i++) {
     for (j = 1; j < input.length - 1; j++) {
@@ -89,7 +94,7 @@ const setFinder = () => {
   return setExists;
 };
 
-const reporter = (e) => {
+const attribAssn = (e) => {
   e.preventDefault();
   const val = e.target.value;
   if (e.target.classList.contains("color")) {
@@ -104,11 +109,19 @@ const reporter = (e) => {
   if (e.target.classList.contains("shade")) {
     card.shade = val;
   }
+  const pending = document.getElementById("pending");
+  console.log(pending);
+  pending.innerHTML = `
+    <div>${card.count}</div>
+    <div>${card.shade}</div>
+    <div>${card.color}</div>
+    <div>${card.shape}</div>
+  `;
   console.log(card);
 };
 
 // === Listeners === //
-document.getElementById("body").addEventListener("click", reporter);
+document.getElementById("body").addEventListener("click", attribAssn);
 document.getElementById("addCard").addEventListener("click", addCard);
 document.getElementById("rmvCard").addEventListener("click", rmvCard);
 document.getElementById("setExists").addEventListener("click", setFinder);
