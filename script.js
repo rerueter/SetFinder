@@ -8,6 +8,37 @@ const card = {
   shape: null,
 };
 
+// get card attributes from interface and construct preview card
+const attribAssn = (e) => {
+  e.preventDefault();
+  const val = e.target.value;
+  const preview = document.getElementById("preview");
+
+  if (e.target.classList.contains("color")) {
+    card.color = val;
+  }
+  if (e.target.classList.contains("count")) {
+    card.count = val;
+  }
+  if (e.target.classList.contains("shape")) {
+    card.shape = val;
+  }
+  if (e.target.classList.contains("shade")) {
+    card.shade = val;
+  }
+
+  console.log(preview);
+
+  preview.innerHTML = `
+    <div>${card.count}</div>
+    <div>${card.shade}</div>
+    <div>${card.color}</div>
+    <div>${card.shape}</div>
+  `;
+
+  console.log(card);
+};
+
 const addCard = () => {
   const newCard = {
     count: card.count,
@@ -16,29 +47,40 @@ const addCard = () => {
     shape: card.shape,
   };
   cards.push(newCard);
-  console.table(cards);
   appendCard();
+
+  console.table(cards);
 };
 
 const appendCard = () => {
   const cardTemplate = document.createElement("div");
-  cardTemplate.classList.add("card");
+
+  cardTemplate.classList.add(
+    "card",
+    `card_${card.count}`,
+    `card_${card.shade}`,
+    `card_${card.color}`,
+    `card_${card.shape}`
+  );
+
   cardTemplate.innerHTML = `     
-    <div>${card.count}</div>
-    <div>${card.shade}</div>
-    <div>${card.color}</div>
-    <div>${card.shape}</div>
+  <div>${card.count}</div>
+  <div>${card.shade}</div>
+  <div>${card.color}</div>
+  <img style="fill:${card.color}" src="assets/${card.shape}.svg"></img>
   `;
+
+  // add card to dom as the last child of 'cards'
   document.getElementById("cards").append(cardTemplate);
 };
 
 const rmvCard = () => {
   cards.pop();
-  console.table(cards);
+  let field = document.getElementById("cards");
+  let last = field.lastChild;
+  field.removeChild(last);
 
-  let hand = document.getElementById("cards");
-  let toRemove = hand.lastChild;
-  hand.removeChild(toRemove);
+  console.table(cards);
 };
 
 // === Set Checkers === //
@@ -92,32 +134,6 @@ const setFinder = () => {
   }
   console.log(`setExists: ${setExists}`);
   return setExists;
-};
-
-const attribAssn = (e) => {
-  e.preventDefault();
-  const val = e.target.value;
-  if (e.target.classList.contains("color")) {
-    card.color = val;
-  }
-  if (e.target.classList.contains("count")) {
-    card.count = val;
-  }
-  if (e.target.classList.contains("shape")) {
-    card.shape = val;
-  }
-  if (e.target.classList.contains("shade")) {
-    card.shade = val;
-  }
-  const pending = document.getElementById("pending");
-  console.log(pending);
-  pending.innerHTML = `
-    <div>${card.count}</div>
-    <div>${card.shade}</div>
-    <div>${card.color}</div>
-    <div>${card.shape}</div>
-  `;
-  console.log(card);
 };
 
 // === Listeners === //

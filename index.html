@@ -9,38 +9,51 @@
     <title>Is Set??</title>
   </head>
   <body id="body">
-    <form action="" class="builder">
-      <div id="count">
-        <button class="count" value="1">1</button>
-        <button class="count" value="2">2</button>
-        <button class="count" value="3">3</button>
+    <main>
+      <header>
+        <h1>Set Detector!</h1>
+      </header>
+
+      <div class="interface">
+        <div class="interface_left">
+          <form action="" class="builder">
+            <div class="attrib" id="count">
+              <button class="count" value="1">I</button>
+              <button class="count" value="2">II</button>
+              <button class="count" value="3">III</button>
+            </div>
+            <div class="attrib" id="shade">
+              <button class="shade empty" value="empty">.</button>
+              <button class="shade hatch" value="hatch">.</button>
+              <button class="shade solid" value="solid">.</button>
+            </div>
+            <div class="attrib" id="color">
+              <button class="color red" value="red">.</button>
+              <button class="color purple" value="purple">.</button>
+              <button class="color green" value="green">.</button>
+            </div>
+            <div class="attrib" id="shape">
+              <button class="shape pill" value="pill">(_)</button>
+              <button class="shape diamond" value="diamond"><></button>
+              <button class="shape squiggle" value="squiggle">~</button>
+            </div>
+          </form>
+        </div>
+        <div class="interface_right">
+          <div class="card" id="preview">
+            <div class="color"></div>
+            <div class="shape"></div>
+            <div class="count"></div>
+            <div class="fill"></div>
+          </div>
+        </div>
       </div>
-      <div id="shade">
-        <button class="shade" value="empty">empty</button>
-        <button class="shade" value="hatch">hatch</button>
-        <button class="shade" value="solid">solid</button>
+      <div class="card_control">
+        <button id="rmvCard">remove previous</button>
+        <button id="addCard">add card</button>
+        <button id="setExists">check!</button>
       </div>
-      <div id="color">
-        <button class="color" value="red">red</button>
-        <button class="color" value="purple">purple</button>
-        <button class="color" value="green">green</button>
-      </div>
-      <div id="shape">
-        <button class="shape" value="pill">pill</button>
-        <button class="shape" value="diamond">diamond</button>
-        <button class="shape" value="squiggle">squiggle</button>
-      </div>
-      <button id="addCard">add card</button>
-      <button id="rmvCard">remove previous card</button>
-    </form>
-    <div id="cards">
-      <div class="card" id="pending">
-        <div class="color">color</div>
-        <div class="shape">shape</div>
-        <div class="count">count</div>
-        <div class="fill">fill</div>
-      </div>
-    </div>
-    <button id="setExists">is there a set??</button>
+      <div id="cards"></div>
+    </main>
   </body>
 </html>

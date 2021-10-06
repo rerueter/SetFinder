@@ -1,27 +1,249 @@
-* {
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 800;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
+
+:root {
+  --cardBG: whitesmoke;
+  --cardBDR: lightgrey;
+  --cardFNT: #151965;
+  --clear: rgba(0, 0, 0, 0);
 }
+
+* {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  color: var(--cardFNT);
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: teal;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: wheat;
+}
+
+main {
+  width: 450px;
+}
+
+header {
+  display: block;
+  text-align: center;
+  background-color: var(--cardBG);
+  color: var(--cardFNT);
+  margin-top: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: var(--cardFNT);
+  background-color: var(--cardBG);
 }
 
 button {
   border-radius: 5px;
+  margin: 0px;
+  padding: 0px;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+.interface {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #46b5d1;
+}
+
+.interface_left {
+  padding: 10px 0px;
+}
+
+.interface_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 35px;
+}
+
+.attrib {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 240px;
+  margin-bottom: 5px;
 }
 
 .card {
-  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5px 2.5px;
+  padding: 20px 0px;
+  background-color: var(--cardBG);
+  color: var(--cardFNT);
   text-align: center;
-  display: grid;
   height: 150px;
   width: 100px;
+  border: 3px solid var(--cardBDR);
   border-radius: 5px;
-  padding: 5px;
-  background-color: salmon;
+  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.5);
 }
 
-.builder button {
-  width: 100px;
+#cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#cards .card {
+  margin: 15px 15px;
+}
+
+.card_control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 15px;
+  background-color: var(--cardBG);
+}
+
+.card_control button {
   height: 50px;
+  width: 100px;
+  border: 2px solid var(--cardFNT);
+}
+
+button {
+  width: 75px;
+  height: 75px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.5);
+}
+
+.count {
+  font-size: 30px;
+}
+
+.empty {
+  box-sizing: borderbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clear);
+  background-color: var (--cardBG);
+  border: 4px solid var(--cardFNT);
+}
+
+.hatch {
+  color: var(--clear);
+  background: repeating-linear-gradient(
+    to right,
+    var(--cardFNT),
+    var(--cardFNT) 2px,
+    var(--cardBG) 2px,
+    var(--cardBG) 7px
+  );
+  border: 4px solid var(--cardFNT);
+}
+
+.solid {
+  color: var(--clear);
+  background: var(--cardFNT);
+}
+
+.color {
+  border: 4px solid var(--cardBG);
+}
+.red {
+  color: var(--clear);
+  background-color: red;
+}
+.purple {
+  color: var(--clear);
+  background-color: purple;
+}
+.green {
+  color: var(--clear);
+  background-color: green;
+}
+
+.shape {
+  color: var(--clear);
+}
+
+.pill {
+  background: url(assets/pill.svg);
+  background-color: var(--cardBG);
+  background-size: 90px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* color: var(--cardFNT); */
+}
+
+.diamond {
+  background: url(assets/diamond.svg);
+  background-color: var(--cardBG);
+  background-size: 90px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* color: var(--cardFNT); */
+}
+
+.squiggle {
+  background: url(assets/squiggle.svg);
+  background-color: var(--cardBG);
+  background-size: 90px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* color: var(--cardFNT); */
+}
+
+@keyframes click {
+  0% {
+    transform: translate(5px -5px);
+  }
+  100% {
+    transform: translate(0px 0px);
+  }
+}
+
+/* card fills based on class */
+.card_empty.card_red {
+  border: 4px solid red;
+}
+.card_empty.card_purple {
+  border: 4px solid purple;
+}
+.card_empty.card_green {
+  border: 4px solid green;
+}
+
+.card_solid.card_red {
+  background-color: red;
+}
+.card_solid.card_purple {
+  background-color: purple;
+}
+.card_solid.card_green {
+  background-color: green;
+}
+
+.card_hatch.card_green {
+  background-color: green;
+  background: repeating-linear-gradient(
+    to right,
+    green,
+    green 4px,
+    var(--cardBG) 4px,
+    var(--cardBG) 8px
+  );
 }
