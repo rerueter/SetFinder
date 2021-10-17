@@ -127,12 +127,14 @@ const setFinder = () => {
         if (setChecker(input[i], input[j], input[k]) === true) {
           setExists = true;
           console.log(`setExists: ${setExists}`);
+          alert("There's a set.");
           return setExists;
         }
       }
     }
   }
   console.log(`setExists: ${setExists}`);
+  alert("Sorry. No Sets here.");
   return setExists;
 };
 
