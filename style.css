@@ -285,38 +285,38 @@ button.color {
 
 .red.hatch {
   background-image: linear-gradient(90deg,
-      var(--red) 20%,
-      var(--cardBG) 20%,
+      var(--red) 25%,
+      var(--cardBG) 25%,
       var(--cardBG) 50%,
       var(--red) 50%,
-      var(--red) 70%,
-      var(--cardBG) 70%,
+      var(--red) 75%,
+      var(--cardBG) 75%,
       var(--cardBG) 100%);
-  background-size: 10px 15px;
+  background-size: 12px 15px;
 }
 
 .green.hatch {
   background-image: linear-gradient(90deg,
-      var(--green) 20%,
-      var(--cardBG) 20%,
+      var(--green) 25%,
+      var(--cardBG) 25%,
       var(--cardBG) 50%,
       var(--green) 50%,
-      var(--green) 70%,
-      var(--cardBG)70%,
+      var(--green) 75%,
+      var(--cardBG)75%,
       var(--cardBG)100%);
-  background-size: 10px 15px;
+  background-size: 12px 15px;
 }
 
 .purple.hatch {
   background-image: linear-gradient(90deg,
-      var(--purple) 20%,
-      var(--cardBG) 20%,
+      var(--purple) 25%,
+      var(--cardBG) 25%,
       var(--cardBG) 50%,
       var(--purple) 50%,
-      var(--purple) 70%,
-      var(--cardBG) 70%,
+      var(--purple) 75%,
+      var(--cardBG) 75%,
       var(--cardBG) 100%);
-  background-size: 10px 15px;
+  background-size: 12px 15px;
 }
 
 .glyph.red.empty {
