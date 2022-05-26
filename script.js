@@ -10,7 +10,6 @@ let card = {
 
 // get card attributes from interface and construct preview card
 const attribAssn = (e) => {
-  e.preventDefault();
   const val = e.target.value;
   const preview = document.getElementById("preview");
 
