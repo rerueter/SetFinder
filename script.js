@@ -124,19 +124,20 @@ const setFinder = () => {
         if (setChecker(input[i], input[j], input[k]) === true) {
           setExists = true;
           console.log(`setExists: ${setExists}`);
-          // alert("There's a set.");
           messager(true);
           return setExists;
         }
       }
     }
   }
-  console.log(`setExists: ${setExists}`);
-  // alert("Sorry. No Sets here.");
+  // console.log(`setExists: ${setExists}`);
   messager(false);
   return setExists;
 };
 
+//=== UI ===//
+
+// append pass / fail message to DOM
 const messager = (input) => {
   const messages = document.querySelector("#messages");
   messages.classList.add("card_control");
@@ -147,6 +148,7 @@ const messager = (input) => {
   }
 };
 
+// clear dynamic DOM elements, reset cards array and card object
 const reset = (e) => {
   if (e.target.classList.contains("reset")) {
     console.log("full reset");
@@ -167,8 +169,8 @@ const reset = (e) => {
     <div>${card.color}</div>
     <div>${card.shape}</div>
   `;
-    console.log("card: " + card);
-    console.log("cards: " + cards);
+    // console.log("card: " + card);
+    // console.log("cards: " + cards);
   }
 };
 
