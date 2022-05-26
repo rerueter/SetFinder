@@ -8,7 +8,8 @@
   --purple: #7c5295;
   --green: #228C22;
   --clear: rgba(0, 0, 0, 0);
-  --shadowLT: rgba(0, 0, 0, .35) --shadowDK: rgba(0, 0, 0, .75)
+  --shadowLT: rgba(0, 0, 0, .35);
+  --shadowDK: rgba(0, 0, 0, .75)
 }
 
 * {
@@ -41,7 +42,7 @@ main {
   width: 450px;
   border: 4px solid var(--cardFNT);
   border-radius: 5px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, .35);
+  box-shadow: 5px 5px 5px var(--shadowLT);
 }
 
 header {
@@ -60,7 +61,7 @@ header {
 footer {
   flex-shrink: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, .75);
+  background-color: var(--shadowDK);
   padding-top: 2px 0px;
   text-align: center;
   display: flex;
@@ -85,7 +86,7 @@ button {
   border-radius: 5px;
   margin: 0px;
   padding: 0px;
-  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.35);
+  box-shadow: 2.5px 2.5px var(--shadowLT);
   text-decoration: none;
 }
 
@@ -94,10 +95,9 @@ button:active {
 }
 
 .interface {
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: #46b5d1;
 }
 
@@ -109,7 +109,6 @@ button:active {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 35px;
 }
 
 .attrib {
@@ -123,17 +122,16 @@ button:active {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  height: 170px;
+  width: 120px;
   margin: 5px 2.5px;
   padding: 20px 0px;
-  background-color: var(--cardBG);
   color: var(--cardFNT);
-  text-align: center;
-  height: 150px;
-  width: 100px;
-  border: 3px solid var(--cardBDR);
-  border-radius: 5px;
-  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.35);
+  background-color: var(--cardBG);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--shadowLT);
 }
 
 .card_control {
@@ -203,7 +201,7 @@ button.hatch {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.35);
+  box-shadow: 2.5px 2.5px var(--shadowLT);
 }
 
 button.glyph {
@@ -248,23 +246,9 @@ button.color {
   background-repeat: no-repeat;
 }
 
-.card {
-  height: 170px;
-  width: 120px;
-  background-color: #fefefe;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.55);
-}
-
 .glyph {
   height: 30px;
   width: 80px;
-  background: rgba(0, 0, 0, 0.5);
   margin: 5px;
 }
 
@@ -287,73 +271,64 @@ button.color {
       0 100%);
 }
 
-.glyph.smootherSquiggle {
-  height: 300px;
-  width: 800px;
-  border: solid black 1px;
-}
-
 .red {
-
   background: var(--red);
 }
 
 .purple {
-
   background: var(--purple);
 }
 
 .green {
-
   background: var(--green);
 }
 
 .red.hatch {
   background-image: linear-gradient(90deg,
       var(--red) 20%,
-      #ffffff 20%,
-      #ffffff 50%,
+      var(--cardBG) 20%,
+      var(--cardBG) 50%,
       var(--red) 50%,
       var(--red) 70%,
-      #ffffff 70%,
-      #ffffff 100%);
-  background-size: 10px 10px;
+      var(--cardBG) 70%,
+      var(--cardBG) 100%);
+  background-size: 10px 15px;
 }
 
 .green.hatch {
   background-image: linear-gradient(90deg,
       var(--green) 20%,
-      #ffffff 20%,
-      #ffffff 50%,
+      var(--cardBG) 20%,
+      var(--cardBG) 50%,
       var(--green) 50%,
       var(--green) 70%,
-      #ffffff 70%,
-      #ffffff 100%);
-  background-size: 10px 10px;
+      var(--cardBG)70%,
+      var(--cardBG)100%);
+  background-size: 10px 15px;
 }
 
 .purple.hatch {
   background-image: linear-gradient(90deg,
       var(--purple) 20%,
-      #ffffff 20%,
-      #ffffff 50%,
+      var(--cardBG) 20%,
+      var(--cardBG) 50%,
       var(--purple) 50%,
       var(--purple) 70%,
-      #ffffff 70%,
-      #ffffff 100%);
-  background-size: 10px 10px;
+      var(--cardBG) 70%,
+      var(--cardBG) 100%);
+  background-size: 10px 15px;
 }
 
 .glyph.red.empty {
-  background: radial-gradient(#fefefe, var(--red));
+  background: radial-gradient(var(--cardBG), var(--red));
 }
 
 .glyph.green.empty {
-  background: radial-gradient(#fefefe, var(--green));
+  background: radial-gradient(var(--cardBG), var(--green));
 }
 
 .glyph.purple.empty {
-  background: radial-gradient(#fefefe, var(--purple));
+  background: radial-gradient(var(--cardBG), var(--purple));
 }
 
 @keyframes click {
