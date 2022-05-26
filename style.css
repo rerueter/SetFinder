@@ -15,17 +15,26 @@
   margin: 0px;
   box-sizing: border-box;
 }
-
+html, body {
+  height:100%;
+}
 body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  background-color: wheat;
+  padding-top:20px;
+  background-image: url(/assets/tabletop.jpeg);
+}
+
+.wrapper {
+  flex:1 0 auto;
 }
 
 main {
   width: 450px;
+  border:4px solid var(--cardFNT);
+  border-radius:5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, .35);
 }
 
 header {
@@ -33,17 +42,35 @@ header {
   text-align: center;
   background-color: var(--cardBG);
   color: var(--cardFNT);
-  margin-top: 20px;
+  border-bottom: 4px solid var(--cardFNT);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  color: var(--cardFNT);
   background-color: var(--cardBG);
+  padding-top:5px;
+  padding-bottom:5px;
 }
 
+footer {
+  flex-shrink:0;
+  width:100%;
+  color:var(--cardBG);
+  background-color: rgba(0, 0, 0, .75);
+  padding-top:2px 0px;
+  text-align:center;
+}
+footer a{
+  text-decoration:none;
+  color:var(--cardBG);
+}
 button {
+  width: 75px;
+  height: 75px;
+  border: none;
   border-radius: 5px;
   margin: 0px;
   padding: 0px;
+  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
 }
 
 button:active {
@@ -90,19 +117,7 @@ button:active {
   width: 100px;
   border: 3px solid var(--cardBDR);
   border-radius: 5px;
-  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.5);
-}
-
-#cards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#cards .card {
-  margin: 15px 15px;
+  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.35);
 }
 
 .card_control {
@@ -113,6 +128,7 @@ button:active {
   border-bottom-right-radius: 5px;
   padding: 15px;
   background-color: var(--cardBG);
+  border-top:4px solid var(--cardFNT)
 }
 
 .card_control button {
@@ -121,19 +137,19 @@ button:active {
   border: 2px solid var(--cardFNT);
 }
 
-button {
-  width: 75px;
-  height: 75px;
-  text-decoration: none;
-  border: none;
-  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.5);
+#messages {
+  background-color:orange;
+  border-radius:0px;
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
 }
 
 .count {
   font-size: 30px;
 }
 
-.empty {
+button.empty {
   box-sizing: borderbox;
   display: flex;
   align-items: center;
@@ -143,7 +159,7 @@ button {
   border: 4px solid var(--cardFNT);
 }
 
-.hatch {
+button.hatch {
   color: var(--clear);
   background: repeating-linear-gradient(
     to right,
@@ -155,14 +171,32 @@ button {
   border: 4px solid var(--cardFNT);
 }
 
-.solid {
+.buttonBox {
+  height: 75px;
+  width: 75px;
+  border-radius: 5px;
+  background-color: var(--cardBG);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.35);
+}
+
+button.glyph {
+  background-color: var(--cardFNT);
+  box-shadow: none;
+}
+
+button.solid {
   color: var(--clear);
   background: var(--cardFNT);
 }
 
-.color {
+button.color {
   border: 4px solid var(--cardBG);
 }
+
 .red {
   color: var(--clear);
   background-color: red;
@@ -207,6 +241,123 @@ button {
   /* color: var(--cardFNT); */
 }
 
+#field {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+  padding-top:20px;
+}
+
+.card {
+  height: 170px;
+  width: 120px;
+  background-color: #fefefe;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.55);
+}
+
+.glyph {
+  height: 30px;
+  width: 80px;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 5px;
+}
+
+.glyph.pill {
+  border-radius: 30px;
+}
+.glyph.diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.glyph.squiggle {
+  clip-path: polygon(
+    0 25%,
+    33% 0,
+    66% 25%,
+    100% 0,
+    100% 75%,
+    66% 100%,
+    33% 75%,
+    0 100%
+  );
+}
+
+.glyph.smootherSquiggle {
+  height: 300px;
+  width: 800px;
+  border: solid black 1px;
+}
+
+.red {
+  background: red;
+}
+.green {
+  background: green;
+}
+.purple {
+  background: purple;
+}
+
+.red.hatch {
+  background-image: linear-gradient(
+    90deg,
+    red 20%,
+    #ffffff 20%,
+    #ffffff 50%,
+    red 50%,
+    red 70%,
+    #ffffff 70%,
+    #ffffff 100%
+  );
+  background-size: 10px 10px;
+}
+
+.green.hatch {
+  background-image: linear-gradient(
+    90deg,
+    green 20%,
+    #ffffff 20%,
+    #ffffff 50%,
+    green 50%,
+    green 70%,
+    #ffffff 70%,
+    #ffffff 100%
+  );
+  background-size: 10px 10px;
+}
+
+.purple.hatch {
+  background-image: linear-gradient(
+    90deg,
+    purple 20%,
+    #ffffff 20%,
+    #ffffff 50%,
+    purple 50%,
+    purple 70%,
+    #ffffff 70%,
+    #ffffff 100%
+  );
+  background-size: 10px 10px;
+}
+
+.glyph.red.empty {
+  background: radial-gradient(#fefefe, red);
+}
+
+.glyph.green.empty {
+  background: radial-gradient(#fefefe, green);
+}
+
+.glyph.purple.empty {
+  background: radial-gradient(#fefefe, purple);
+}
+
 @keyframes click {
   0% {
     transform: translate(5px -5px);
@@ -214,36 +365,4 @@ button {
   100% {
     transform: translate(0px 0px);
   }
-}
-
-/* card fills based on class */
-.card_empty.card_red {
-  border: 4px solid red;
-}
-.card_empty.card_purple {
-  border: 4px solid purple;
-}
-.card_empty.card_green {
-  border: 4px solid green;
-}
-
-.card_solid.card_red {
-  background-color: red;
-}
-.card_solid.card_purple {
-  background-color: purple;
-}
-.card_solid.card_green {
-  background-color: green;
-}
-
-.card_hatch.card_green {
-  background-color: green;
-  background: repeating-linear-gradient(
-    to right,
-    green,
-    green 4px,
-    var(--cardBG) 4px,
-    var(--cardBG) 8px
-  );
 }

@@ -9,51 +9,63 @@
     <title>Is Set??</title>
   </head>
   <body id="body">
-    <main>
-      <header>
-        <h1>Set Detector!</h1>
-      </header>
+    <div class="wrapper">
+      <main>
+        <header>
+          <h1>Set Detector!</h1>
+        </header>
 
-      <div class="interface">
-        <div class="interface_left">
-          <form action="" class="builder">
-            <div class="attrib" id="count">
-              <button class="count" value="1">I</button>
-              <button class="count" value="2">II</button>
-              <button class="count" value="3">III</button>
+        <div class="interface">
+          <div class="interface_left">
+            <form action="" class="builder">
+              <div class="attrib" id="count">
+                <button class="count" value="1">I</button>
+                <button class="count" value="2">II</button>
+                <button class="count" value="3">III</button>
+              </div>
+              <div class="attrib" id="shade">
+                <button class="shade empty" value="empty"></button>
+                <button class="shade hatch" value="hatch"></button>
+                <button class="shade solid" value="solid"></button>
+              </div>
+              <div class="attrib" id="color">
+                <button class="color red" value="red"></button>
+                <button class="color purple" value="purple"></button>
+                <button class="color green" value="green"></button>
+              </div>
+              <div class="attrib" id="shape">
+                <div class="buttonBox">
+                  <button class="glyph pill" value="pill"></button>
+                </div>
+                <div class="buttonBox">
+                  <button class="glyph diamond" value="diamond"></button>
+                </div>
+                <div class="buttonBox">
+                  <button class="glyph squiggle" value="squiggle"></button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="interface_right">
+            <div class="card" id="preview">
+              <div>?</div>
+              <div>?</div>
+              <div>?</div>
+              <div>?</div>
             </div>
-            <div class="attrib" id="shade">
-              <button class="shade empty" value="empty">.</button>
-              <button class="shade hatch" value="hatch">.</button>
-              <button class="shade solid" value="solid">.</button>
-            </div>
-            <div class="attrib" id="color">
-              <button class="color red" value="red">.</button>
-              <button class="color purple" value="purple">.</button>
-              <button class="color green" value="green">.</button>
-            </div>
-            <div class="attrib" id="shape">
-              <button class="shape pill" value="pill">(_)</button>
-              <button class="shape diamond" value="diamond"><></button>
-              <button class="shape squiggle" value="squiggle">~</button>
-            </div>
-          </form>
-        </div>
-        <div class="interface_right">
-          <div class="card" id="preview">
-            <div class="color"></div>
-            <div class="shape"></div>
-            <div class="count"></div>
-            <div class="fill"></div>
           </div>
         </div>
-      </div>
-      <div class="card_control">
-        <button id="rmvCard">remove previous</button>
-        <button id="addCard">add card</button>
-        <button id="setExists">check!</button>
-      </div>
-      <div id="cards"></div>
-    </main>
+        <div id="messages"></div>
+        <div class="card_control">
+          <button id="rmvCard">remove previous</button>
+          <button id="addCard">add card</button>
+          <button id="setExists">check!</button>
+        </div>
+      </main>
+      <div id="field"></div>
+    </div>
+    <footer>
+      <a href="https://github.com/rerueter">©2022 Randy Rueter</a>
+    </footer>
   </body>
 </html>

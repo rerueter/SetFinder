@@ -1,11 +1,11 @@
-//=== Deck Construction ===//
+// === Deck Construction === //
 
-const cards = [];
-const card = {
-  count: null,
-  shade: null,
-  color: null,
-  shape: null,
+let cards = [];
+let card = {
+  count: "?",
+  shade: "?",
+  color: "?",
+  shape: "?",
 };
 
 // get card attributes from interface and construct preview card
@@ -20,7 +20,7 @@ const attribAssn = (e) => {
   if (e.target.classList.contains("count")) {
     card.count = val;
   }
-  if (e.target.classList.contains("shape")) {
+  if (e.target.classList.contains("glyph")) {
     card.shape = val;
   }
   if (e.target.classList.contains("shade")) {
@@ -47,40 +47,37 @@ const addCard = () => {
     shape: card.shape,
   };
   cards.push(newCard);
-  appendCard();
 
-  console.table(cards);
+  cardBuilder(card);
+
+  // console.table(cards);
 };
 
-const appendCard = () => {
-  const cardTemplate = document.createElement("div");
-
-  cardTemplate.classList.add(
-    "card",
-    `card_${card.count}`,
-    `card_${card.shade}`,
-    `card_${card.color}`,
-    `card_${card.shape}`
-  );
-
-  cardTemplate.innerHTML = `     
-  <div>${card.count}</div>
-  <div>${card.shade}</div>
-  <div>${card.color}</div>
-  <img style="fill:${card.color}" src="assets/${card.shape}.svg"></img>
-  `;
-
-  // add card to dom as the last child of 'cards'
-  document.getElementById("cards").append(cardTemplate);
+const cardBuilder = (input) => {
+  const cardNew = document.createElement("div");
+  cardNew.classList.add("card");
+  for (i = 0; i < input.count; i++) {
+    const glyph = document.createElement("div");
+    glyph.classList.add(
+      "glyph",
+      `${input.color}`,
+      `${input.shade}`,
+      `${input.shape}`
+    );
+    cardNew.appendChild(glyph);
+  }
+  console.log(cardNew);
+  field.appendChild(cardNew);
+  return cardNew;
 };
 
 const rmvCard = () => {
   cards.pop();
-  let field = document.getElementById("cards");
+  let field = document.getElementById("field");
   let last = field.lastChild;
   field.removeChild(last);
 
-  console.table(cards);
+  // console.table(cards);
 };
 
 // === Set Checkers === //
@@ -123,35 +120,61 @@ const setFinder = () => {
   for (i = 0; i < input.length - 2; i++) {
     for (j = 1; j < input.length - 1; j++) {
       for (k = 2; k < input.length; k++) {
-        console.log(input[i], input[j], input[k]);
+        // console.log(input[i], input[j], input[k]);
         if (setChecker(input[i], input[j], input[k]) === true) {
           setExists = true;
           console.log(`setExists: ${setExists}`);
-          alert("There's a set.");
+          // alert("There's a set.");
+          messager(true);
           return setExists;
         }
       }
     }
   }
   console.log(`setExists: ${setExists}`);
-  alert("Sorry. No Sets here.");
+  // alert("Sorry. No Sets here.");
+  messager(false);
   return setExists;
+};
+
+const messager = (input) => {
+  const messages = document.querySelector("#messages");
+  messages.classList.add("card_control");
+  if (input) {
+    messages.innerHTML = `<h1>Set Detected!</h1><button class="reset">clear board</button>`;
+  } else {
+    messages.innerHTML = `<h1>No Set Detected!</h1><button class="reset">clear board</button>`;
+  }
+};
+
+const reset = (e) => {
+  if (e.target.classList.contains("reset")) {
+    console.log("full reset");
+    document.querySelector("#field").innerHTML = "";
+    document.querySelector("#preview").innerHTML = "";
+    document.querySelector("#messages").innerHTML = "";
+    document.querySelector("#messages").classList.remove("card_control");
+    cards = [];
+    card = {
+      count: "?",
+      shade: "?",
+      color: "?",
+      shape: "?",
+    };
+    document.querySelector("#preview").innerHTML = `
+    <div>${card.count}</div>
+    <div>${card.shade}</div>
+    <div>${card.color}</div>
+    <div>${card.shape}</div>
+  `;
+    console.log("card: " + card);
+    console.log("cards: " + cards);
+  }
 };
 
 // === Listeners === //
 document.getElementById("body").addEventListener("click", attribAssn);
+document.getElementById("body").addEventListener("click", reset);
 document.getElementById("addCard").addEventListener("click", addCard);
 document.getElementById("rmvCard").addEventListener("click", rmvCard);
 document.getElementById("setExists").addEventListener("click", setFinder);
-
-// const cards = [
-//   { color: "red", shape: "squiggle", count: 3, fill: "solid" },
-//   { color: "red", shape: "squiggle", count: 3, fill: "hatch" },
-//   { color: "red", shape: "squiggle", count: 3, fill: "empty" },
-//   { color: "blue", shape: "pill", count: 3, fill: "solid" },
-//   { color: "blue", shape: "pill", count: 3, fill: "hatch" },
-//   { color: "blue", shape: "pill", count: 3, fill: "empty" },
-//   { color: "green", shape: "diamond", count: 3, fill: "solid" },
-//   { color: "green", shape: "diamond", count: 3, fill: "hatch" },
-//   { color: "green", shape: "diamond", count: 3, fill: "empty" },
-// ];
