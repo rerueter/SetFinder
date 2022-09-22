@@ -134,7 +134,7 @@ const setFinder = () => {
   return setExists;
 };
 
-//=== UI ===//
+// === UI === //
 
 // append pass / fail message to DOM
 const messager = (input) => {
