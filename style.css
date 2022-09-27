@@ -151,7 +151,7 @@ button:active {
 }
 
 #messages {
-  background-color: orange;
+  background-color: var(--red);
   border-radius: 0px;
   display: flex;
   align-items: center;

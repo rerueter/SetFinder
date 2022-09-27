@@ -26,7 +26,7 @@ const attribAssn = (e) => {
     card.shade = val;
   }
 
-  console.log(preview);
+  // console.log(preview);
 
   preview.innerHTML = `
     <div>${card.count}</div>
@@ -35,7 +35,7 @@ const attribAssn = (e) => {
     <div>${card.shape}</div>
   `;
 
-  console.log(card);
+  // console.log(card);
 };
 
 const addCard = () => {
@@ -65,7 +65,7 @@ const cardBuilder = (input) => {
     );
     cardNew.appendChild(glyph);
   }
-  console.log(cardNew);
+  // console.log(cardNew);
   field.appendChild(cardNew);
   return cardNew;
 };
@@ -90,7 +90,7 @@ const subsetChecker = (a, b, c) => {
   } else if (a != b && b != c && a != c) {
     subset = true;
   }
-  console.log(`subset: ${subset}`);
+  // console.log(`subset: ${subset}`);
   return subset;
 };
 
@@ -106,7 +106,7 @@ const setChecker = (a, b, c) => {
   if (color && shape && count && fill) {
     set = true;
   }
-  console.log(`set: ${set}`);
+  // console.log(`set: ${set}`);
   return set;
 };
 
@@ -122,7 +122,7 @@ const setFinder = () => {
         // console.log(input[i], input[j], input[k]);
         if (setChecker(input[i], input[j], input[k]) === true) {
           setExists = true;
-          console.log(`setExists: ${setExists}`);
+          // console.log(`setExists: ${setExists}`);
           messager(true);
           return setExists;
         }
@@ -150,7 +150,7 @@ const messager = (input) => {
 // clear dynamic DOM elements, reset cards array and card object
 const reset = (e) => {
   if (e.target.classList.contains("reset")) {
-    console.log("full reset");
+    // console.log("full reset");
     document.querySelector("#field").innerHTML = "";
     document.querySelector("#preview").innerHTML = "";
     document.querySelector("#messages").innerHTML = "";
