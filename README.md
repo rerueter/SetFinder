@@ -12,8 +12,10 @@ Replicate your current field of cards, hit the 'check!' button, and find out if 
 
 ## todos
 
+- instruction / didactic modal
+
 - I'd like to add logic that prevents adding incomplete cards to the board - as it is, deleting mistakes (or acts of trolling) is an option, but preventing them outright would be good.
 
 - nicer glyph art
 
-- gotta make it responsive, would be clutch to be able to pull this up on a phone.
+- would like to redesign around a responsivness, the site works on a larger iphone but I'm not sure about smaller screens.
